@@ -21,21 +21,21 @@ var T = new Twit({
 });
 
 var text = [
-  "thanks for helping!",
-  "thanks for testing!",
-  "you rock!",
-  "TweetBot will take over the world!",
-  "check back for more development",
-  "beep boop bop...",
-  "responsive twitter bot online!",
-  "first twitter, next... the WORLD!",
-  "thanks for your help!",
-  "you're awesome!",
-  "random 1",
-  "random 2",
-  "random 3",
-  "I need more phrases",
-  "This is tough..."
+  "thanks for helping! #cool",
+  "thanks for testing! #sweet",
+  "you rock! #awesome",
+  "TweetBot will take over the world! #word",
+  "check back for more development #cool",
+  "beep boop bop... #tweet",
+  "responsive twitter bot online! #bot",
+  "first twitter, next... the WORLD! #bot",
+  "thanks for your help! #bot",
+  "you're awesome! #bot",
+  "random 1 #bot",
+  "random 2 #bot",
+  "random 3 #bot",
+  "I need more phrases #bot",
+  "This is tough... #bot"
 ]
 
 // prelim();
@@ -62,9 +62,11 @@ function recieved(tweet) {
   console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
   console.log("Tweet Recieved...");
   var msg = tweet.text;
-  var sn = tweet.user.screen_name
+  var sn = tweet.user.screen_name;
+  var hash = tweet.entities.hashtags[0].text;
   console.log("Message: " + msg);
   console.log("User: @" + sn);
+  console.log("Hashtags: " + hash);
 
   tweetMessage('@' + sn + " " + text[rand], sn);	//(" ") = txt
   }
@@ -89,15 +91,17 @@ function tweetMessage(txt, sn)
   else {
     console.log(' ');
     console.log("Self-Reply not posted...");
+    console.log(' ');
   }
 	function tweeted(err, data, response) {
 		if(err){
-      // stream.on('error', errMess)
+      console.log(' ');
 			console.log("Something went wrong!");
       console.log(err);
       console.log(" ");
 		}
 		else{
+      console.log(' ');
 			console.log("Tweet Posted!");
       console.log(" ");
 		}
