@@ -52,7 +52,7 @@ function replyToDirectMessage(){
   //get the user stream
   var stream = T.stream('user');
   console.log("Stream Initialized...");
-
+  //When tweet is recieved we activate the recieve function...
   stream.on('tweet', recieved);
 }
 
@@ -67,7 +67,7 @@ function recieved(tweet) {
   console.log("Message: " + msg);
   console.log("User: @" + sn);
   console.log("Hashtags: " + hash);
-
+  //Calling the posting function
   tweetMessage('@' + sn + " " + text[rand], sn);	//(" ") = txt
   }
 
