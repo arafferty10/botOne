@@ -27,21 +27,33 @@ var languageTranslator = new LanguageTranslatorV2({
 // );
 //
 
-var parameters = {
-  text: 'Hello',
-  model_id: 'en-es'
-};
-
-languageTranslator.translate(
-  parameters,
-  function(error, response) {
-    if (error)
-      console.log(error)
+//Get identifiable languages
+languageTranslator.getIdentifiableLanguages(
+  {},
+  function(err, response) {
+    if (err)
+      console.log(err)
     else
-      // console.log(response.translations[0].translation);
       console.log(JSON.stringify(response, null, 2));
-      //This is used in twitTrans I tested it here however
-      var newLang = response.translations[0].translation;
-      console.log(newLang);
   }
 );
+//
+// var parameters = {
+//   text: 'Hello',
+//   model_id: 'en-es'
+// };
+//
+// //Translate function
+// languageTranslator.translate(
+//   parameters,
+//   function(error, response) {
+//     if (error)
+//       console.log(error)
+//     else
+//       // console.log(response.translations[0].translation);
+//       console.log(JSON.stringify(response, null, 2));
+//       //This is used in twitTrans I tested it here however
+//       var newLang = response.translations[0].translation;
+//       console.log(newLang);
+//   }
+// );

@@ -20,7 +20,16 @@ var languageTranslator = new LanguageTranslatorV2({
 var Twit = require('twit');
 
 //Now we are making a simple T variable to be used anytime we want to use the twit library we just do t.< >
-//Keys are from ResponseTest2
+//Keys are from translate bot (USE FOR REAL APPLICATION)
+// var T = new Twit({
+//   consumer_key:         'Lp6MIlkYFsf42LybWhg3S0UxC',
+//   consumer_secret:      'pXyiNtA5U9UvGBpHgGaYKmkhedAplw97SKtOVoECUzhSn7e8Dx',
+//   access_token:         '966396064948342784-uWM5he8YXOfMzLEcLfAzZKhezX1AVKA',
+//   access_token_secret:  'gmfljHcY8gPgGmFeCM7z0pGYwxsKjV0gEwLKSJAcIRDMN',
+//   timeout_ms:           60*1000,  // optional HTTP request timeout to apply to all requests.
+// });
+
+//Keys are from ResponseTest2 (USE FOR TESTING)
 var T = new Twit({
   consumer_key:         'XAjruRZe6O6gen4zGLJL5VTbw',
   consumer_secret:      'vw3a8tb1AnMXEEUI3HXt7Xq5CpvjB0LNEtmAf5PmJCZYkQ3RPq',
@@ -29,14 +38,9 @@ var T = new Twit({
   timeout_ms:           60*1000,  // optional HTTP request timeout to apply to all requests.
 });
 
-
-// prelim();
+//Init function
 replyToDirectMessage()
-// setInterval(prelim, 1000*60) //in milliseconds so 1000*60 = 1 min // 1000*60*10 = every 10 min
 
-// function prelim(){
-//   replyToDirectMessage()
-// }
 
 // Reply to Twitter messages
 function replyToDirectMessage(){
@@ -54,23 +58,25 @@ function recieved(tweet) {
   console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
   console.log("Tweet Recieved...");
   var msgRaw = tweet.text;
+  //Taking out the bots user name so it doesn't get reposted in response
   var msg = msgRaw.replace("@aRaffaBot","");
   var sn = tweet.user.screen_name;
+  //*****************Hashtags to ID languages******************
   var hash = tweet.entities.hashtags[0].text;
   console.log("Message: " + msg);
   console.log("User: @" + sn);
   console.log("Hashtags: " + hash);
-  //sends message to translate function to be translated
-  //hopeful to use hashtags to ID which language user wants translated to
-  translate(msg, sn)
+  translate(msg, sn, hash) //sends message to translate function to be translated
 }
 
 //Translate function
-function translate(msg, sn){
+function translate(msg, sn, hash){
+  //takes the hashtag and converts from english to user input language
+  var conv = 'en-'+ hash;
   //Takes the tweet that was sent to it and makes a parameter
   var parameters = {
     text: msg,
-    model_id: 'en-es'
+    model_id: conv
   };
 //Watson function for translation
   languageTranslator.translate(
@@ -108,13 +114,16 @@ function tweetMessage(txt, sn)
   else {
     console.log(' ');
     console.log("Self-Reply not posted...");
+    console.log("Waiting for new tweet...");
     console.log(' ');
   }
+
 	function tweeted(err, data, response) {
 		if(err){
       console.log(' ');
 			console.log("Something went wrong!");
       console.log(err);
+      console.log("Waiting for new tweet...");
       console.log(" ");
 		}
 		else{
