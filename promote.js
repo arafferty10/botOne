@@ -12,10 +12,10 @@ var Twit = require('twit');
 
 //Now we are making a simple T variable to be used anytime we want to use the twit library we just do t.< >
 var T = new Twit({
-  consumer_key:         '5eAgeC3EbHxamOqe14OjoBX26',
-  consumer_secret:      'raVlgPvenfKXuerw44JX3RI5JxdM9zXOZ8P9jZjNZlnGYdb7tI',
-  access_token:         '906982976344481794-LcBqBKzkqPK0NSb78zmAdkQH0mMMX4F',
-  access_token_secret:  'P2ea2CLiGNlOmfOV2gXoL4W4AWRWe21OvThe4y6QxYlym',
+  consumer_key:         '',
+  consumer_secret:      '',
+  access_token:         '',
+  access_token_secret:  '',
   timeout_ms:           60*1000,  // optional HTTP request timeout to apply to all requests.
 });
 

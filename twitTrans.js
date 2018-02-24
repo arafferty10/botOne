@@ -22,19 +22,19 @@ var Twit = require('twit');
 //Now we are making a simple T variable to be used anytime we want to use the twit library we just do t.< >
 //Keys are from translate bot (USE FOR REAL APPLICATION)
 // var T = new Twit({
-//   consumer_key:         'Lp6MIlkYFsf42LybWhg3S0UxC',
-//   consumer_secret:      'pXyiNtA5U9UvGBpHgGaYKmkhedAplw97SKtOVoECUzhSn7e8Dx',
-//   access_token:         '966396064948342784-uWM5he8YXOfMzLEcLfAzZKhezX1AVKA',
-//   access_token_secret:  'gmfljHcY8gPgGmFeCM7z0pGYwxsKjV0gEwLKSJAcIRDMN',
+//   consumer_key:         '',
+//   consumer_secret:      '',
+//   access_token:         '',
+//   access_token_secret:  '',
 //   timeout_ms:           60*1000,  // optional HTTP request timeout to apply to all requests.
 // });
 
 //Keys are from ResponseTest2 (USE FOR TESTING)
 var T = new Twit({
-  consumer_key:         'XAjruRZe6O6gen4zGLJL5VTbw',
-  consumer_secret:      'vw3a8tb1AnMXEEUI3HXt7Xq5CpvjB0LNEtmAf5PmJCZYkQ3RPq',
-  access_token:         '906982976344481794-7Nbvj6fCqkcTHNVoaepvq6iIMIJxc8G',
-  access_token_secret:  'sDFWRJDAcscgFkGf0Sp1M4iPB0K5FLMwW6ck2y3ANMy9a',
+  consumer_key:         '',
+  consumer_secret:      '',
+  access_token:         '',
+  access_token_secret:  '',
   timeout_ms:           60*1000,  // optional HTTP request timeout to apply to all requests.
 });
 
@@ -94,7 +94,7 @@ function translate(msg, sn, hash){
   );
 }
 
-
+//This function tweets the message to twitter
 function tweetMessage(txt, sn)
 {
 	var tweet = {

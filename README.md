@@ -18,6 +18,10 @@ Tweets back at a user when they follow the bot
 
 Twitter bot that looks for a single tweet with #MAGA and sends a random response to the user
 
+###language.JSON
+
+List of all languages that can be used with Watson Translate API
+
 ### LedBlink
 
 Simple LED blink for Arduino board using Johnny-Five library
